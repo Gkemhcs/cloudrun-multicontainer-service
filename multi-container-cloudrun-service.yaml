@@ -1,0 +1,18 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+     run.googleapis.com/launch-stage: BETA
+  name: multi-container
+spec:
+  template:
+    metadata:
+      annotations:
+        run.googleapis.com/execution-environment:  gen2
+    spec:
+      containers:
+      - image: us-docker.pkg.dev/endpoints-demo-gkem/repo/frontend 
+        ports:
+          - containerPort: 8080
+      - image: us-docker.pkg.dev/endpoints-demo-gkem/repo/backend
+      
